@@ -25,12 +25,8 @@ app.get('/search',(req,res) =>{
   });
    
 });
-//Show queryed pets
-app.get('/search/:term/results',(req,res) => {
-  Pet.find(req.params.term).exec((err,pet) =>{
-    res.render("pets-results")
-  })
-});
+
+
   // NEW PET
   app.get('/pets/new', (req, res) => {
     res.render('pets-new');
