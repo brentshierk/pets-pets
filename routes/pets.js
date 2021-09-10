@@ -26,7 +26,6 @@ app.get('/search',(req,res) =>{
    
 });
 
-
   // NEW PET
   app.get('/pets/new', (req, res) => {
     res.render('pets-new');
@@ -38,10 +37,11 @@ app.get('/search',(req,res) =>{
 
     pet.save()
       .then((pet) => {
-        res.redirect(`/pets/${pet._id}`);
+        res.send({ pet: pet });
       })
       .catch((err) => {
-        // Handle Errors
+        // STATUS OF 400 FOR VALIDATIONS
+        res.status(400).send(err.errors);
       }) ;
   });
 
